@@ -34,6 +34,9 @@ A simple scene with one object and a point light
 
 ### Task 3:
 EVEN<br>
+#### Release
+https://github.com/Jelanigarnes/IndividualAssignment2/releases/tag/FinalBuild
+#### Description
 The square shape wave effect was implemented by compuinge the sine wave displacement value at the current position and time and then normalizing the wave displacement value to a range of -1 to 1</br></br>
 // Compute the sine wave displacement value at the current position and time</br>
    float waveDisplacement = sin((v.vertex.x * _WaveV) + (time * _WaveM));</br></br>
