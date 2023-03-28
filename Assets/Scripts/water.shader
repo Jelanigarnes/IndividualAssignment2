@@ -86,8 +86,9 @@ Shader "Custom/water"
 
         fixed4 frag(v2f i):SV_Target
         {                
-                fixed4 col=tex2D(_MainTex,i.uv);
+                fixed4 col=tex2D(_MainTex,i.uv); // Sample the main texture using the texture coordinates passed from the vertex shader, and assign it to a fixed4 color value
                 UNITY_APPLY_FOG(i.fogCoord,col)
+                // If the ToonShade property is set to 1, perform additional computations to create a cel-shaded look
                 if (_ToonShade == 1) {
                     col.rgb = (step(0.75, col.r) + step(0.5, col.r) + step(0.25, col.r)) * col.rgb;
                 }
