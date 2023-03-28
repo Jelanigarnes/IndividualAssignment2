@@ -5,6 +5,7 @@ Shader "Custom/waveShader" {
         _Distortion ("Distortion", Range(0,1)) = 0.1
         _WaveLength ("Wave Length", Range(0.1,10)) = 1
         _Speed ("Speed", Range(-2,2)) = 0.5
+        _SpeedY ("Speed Y", Range(-2,2)) = 0.5 // new property for controlling vertical movement
         _ToonShade ("Toon Shading", Range(0,1)) = 1
     }
 
@@ -33,6 +34,7 @@ Shader "Custom/waveShader" {
             float _Distortion;
             float _WaveLength;
             float _Speed;
+            float _SpeedY; // new variable for controlling vertical movement
             float _ToonShade;
 
             v2f vert (appdata v) {
@@ -45,11 +47,10 @@ Shader "Custom/waveShader" {
             fixed4 frag (v2f i) : SV_Target {
                 float2 uv = i.uv;
                 uv.x += _Time.y * _Speed;
-                float wave = sin(uv.y * _WaveLength + _Time.y * _Speed) * _Distortion;
+                float wave = cos(uv.y * _WaveLength + _Time.y * _SpeedY) * _Distortion; // modified to use cos function and new SpeedY property
                 float4 tex = tex2D(_MainTex, uv + float2(wave, 0));
                 float4 col = tex * _Color;
 
-                //multiplies the color value col.rgb by a step function
                 if (_ToonShade == 1) {
                     col.rgb = (step(0.75, col.r) + step(0.5, col.r) + step(0.25, col.r)) * col.rgb;
                 }
