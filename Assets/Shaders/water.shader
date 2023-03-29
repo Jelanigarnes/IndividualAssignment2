@@ -22,6 +22,9 @@ Shader "Custom/water"
             #pragma fragment frag
             #pragma multi_compile_fog
             #include "UnityCG.cginc"
+            #include "UnityLightingCommon.cginc"
+            #include "Lighting.cginc"
+            #include "AutoLight.cginc"
 
             struct Input
             {
@@ -40,6 +43,8 @@ Shader "Custom/water"
                 float2 uv :TEXCOORD0;
                 UNITY_FOG_COORDS(1)
                 float4 vertex : SV_POSITION;
+                fixed4 diff : COLOR0;
+                SHADOW_COORDS(1)
             };
 
             sampler2D _MainTex;
@@ -57,6 +62,10 @@ Shader "Custom/water"
             v2f o;
             o.uv = TRANSFORM_TEX(v.uv, _MainTex);                
             UNITY_TRANSFER_FOG(o,o.vertex);
+            half3 worldNormal = UnityObjectToWorldNormal(v.normal);
+            half nl = max(0, dot(worldNormal, _WorldSpaceLightPos0.xyz));
+           o.diff = nl * _LightColor0;
+           TRANSFER_SHADOW(o)
             // Retrieve the displacement value from the texture
             float displacement = tex2Dlod(_DisplacementMap,float4(o.uv,0,0)).r;
             
@@ -88,6 +97,8 @@ Shader "Custom/water"
         {                
                 fixed4 col=tex2D(_MainTex,i.uv); // Sample the main texture using the texture coordinates passed from the vertex shader, and assign it to a fixed4 color value
                 UNITY_APPLY_FOG(i.fogCoord,col)
+                fixed shadow = SHADOW_ATTENUATION(i);
+                col.rgb *= i.diff * shadow;
                 // If the ToonShade property is set to 1, perform additional computations to create a cel-shaded look
                 if (_ToonShade == 1) {
                     col.rgb = (step(0.75, col.r) + step(0.5, col.r) + step(0.25, col.r)) * col.rgb;
