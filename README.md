@@ -1,4 +1,6 @@
 # Individual Assignment 2
+### Review/Self evaluation PDF
+[review in-class assignment.pdf](https://github.com/Jelanigarnes/IndividualAssignment2/files/11103167/review.in-class.assignment.pdf)
 
 ### Task 1:
 
