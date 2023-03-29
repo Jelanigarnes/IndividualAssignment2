@@ -123,3 +123,19 @@ For this task I implemented a custom bloom effect. This was implemented in out p
 ## Project Build
 
 https://github.com/Jelanigarnes/IndividualAssignment2/releases/tag/FinalBuild
+
+
+## Self Evaluation
+Task	Value
+Create repository and Unity project	1/1
+Explain the difference between forward and deferred
+rendering using a diagram	0.8/1
+Create a toon shaded square-shaped wave.	2.5/3
+Explain the code snippet	0.4/0.5
+Add to shaders to the designated scene	2.5/3
+Explain the code snippet	0.4/0.5
+Explain any shader of your choosing	0.6/1
+Total	8.2/10
+![4](https://user-images.githubusercontent.com/35810049/228605562-9a8f8843-aeef-4c28-9f6c-6d64b7becb78.png)
+
+
