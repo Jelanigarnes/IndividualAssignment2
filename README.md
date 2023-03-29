@@ -120,4 +120,4 @@ For this task I implemented a custom bloom effect. This was implemented in out p
 
 ## Project Build
 
-
+https://github.com/Jelanigarnes/IndividualAssignment2/releases/tag/FinalBuild
