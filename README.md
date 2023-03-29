@@ -117,6 +117,8 @@ For this task I implemented a custom bloom effect. This was implemented in out p
 
 ![2](https://user-images.githubusercontent.com/35810049/228599597-8e70f53c-0a1b-4d0e-b543-3c02c731de1a.png)
 
+![3](https://user-images.githubusercontent.com/35810049/228601898-2227c272-ede4-4f04-89bd-516f038f361e.png)
+
 
 ## Project Build
 
